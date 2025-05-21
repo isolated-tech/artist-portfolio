@@ -4,6 +4,7 @@ import type React from "react";
 
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -122,9 +123,27 @@ export default function ContactPage() {
                 <Mail className="h-6 w-6 text-primary mt-0.5" />
                 <div>
                   <h3 className="font-medium">Email</h3>
-                  <p className="text-muted-foreground">
+                  <a
+                    href="mailto:aalfaro90@gpofinalpa.com"
+                    className="text-muted-foreground no-underline hover:underline"
+                  >
                     aalfaro90@gpofinalpa.com
-                  </p>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <FaInstagram className="h-6 w-6 text-primary mt-0.5" />
+                <div>
+                  <h3 className="font-medium">Instagram</h3>
+                  <a
+                    href="https://www.instagram.com/jaap_1990/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:underline"
+                  >
+                    @jaap_1990
+                  </a>
                 </div>
               </div>
 
@@ -132,7 +151,12 @@ export default function ContactPage() {
                 <Phone className="h-6 w-6 text-primary mt-0.5" />
                 <div>
                   <h3 className="font-medium">Teléfono</h3>
-                  <p className="text-muted-foreground">+52 1 55 3433 4589</p>
+                  <a
+                    href="tel:+5215534334589"
+                    className="text-muted-foreground hover:underline"
+                  >
+                    +52 1 55 3433 4589
+                  </a>
                 </div>
               </div>
             </div>
