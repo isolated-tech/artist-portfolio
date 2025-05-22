@@ -80,17 +80,17 @@ export default function AboutPage() {
                   Declaración de el artista
                 </h3>
                 <p className="text-muted-foreground italic mb-4">
-                  Mi trabajo explora la tensión entre la composición
-                  estructurada y la expresión espontánea. Me fascinan las formas
-                  en que el color, la forma y la textura pueden evocar
-                  respuestas emocionales y crear narrativas visuales que
-                  trascienden el lenguaje.
+                  Este proyecto traza mi camino como artista y como persona.
+                  Explora de dónde vengo, los desafíos que he enfrentado y hacia
+                  dónde me dirijo. Se centra principalmente en los últimos cinco
+                  años, un periodo de transformación, introspección y
+                  crecimiento.
                 </p>
-                <p className="text-muted-foreground italic">
-                  A través de mis pinturas, invito a los espectadores a
-                  involucrarse con sus propias percepciones e interpretaciones,
-                  encontrando un significado personal dentro de los paisajes
-                  abstractos que creo.
+
+                <p className="text-muted-foreground italic mb-4">
+                  Cada capítulo refleja una parte de mi historia: mi pasado, mis
+                  luchas, mis descubrimientos y la manera en que he usado el
+                  arte para expresarme, sanar y conectar.
                 </p>
               </div>
             </div>

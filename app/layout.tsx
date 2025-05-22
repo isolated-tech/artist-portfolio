@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import ClientLayout from "./clientLayout";
 
 export const metadata: Metadata = {
-  title: "Alfonso Alfaro | Contemporary Abstract Artist",
+  title: "Alfonso Alfaro | Contemporary Artist",
   description:
-    "Portfolio and exhibition information for contemporary abstract artist Alfonso Alfaro",
+    "Portfolio and exhibition information for contemporary artist Alfonso Alfaro",
 };
 
 export default function RootLayout({

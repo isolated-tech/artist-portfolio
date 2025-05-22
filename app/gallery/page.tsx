@@ -28,7 +28,7 @@ const artworks = [
   {
     id: 2,
     title: "Espíritus",
-    year: 2024,
+    year: 2025,
     medium: "Óleo sobre tela",
     dimensions: "130 × 100 cm",
     image: "https://i.imgur.com/Glu420Q.jpeg",
@@ -44,7 +44,7 @@ const artworks = [
   {
     id: 4,
     title: "Invitación",
-    year: 2023,
+    year: 2024,
     medium: "Óleo sobre tela",
     dimensions: "20 x 20 cm",
     image: "https://i.imgur.com/XEgDviV.png.png",
@@ -52,7 +52,7 @@ const artworks = [
   {
     id: 5,
     title: "Hasta nunca (ojalá)",
-    year: 2023,
+    year: 2025,
     medium: "Óleo sobre tela",
     dimensions: "20 x 20 cm",
     image: "https://i.imgur.com/bCRV5Ug.jpegnunca.jpeg",
@@ -60,7 +60,7 @@ const artworks = [
   {
     id: 6,
     title: "Parque de Diversiones",
-    year: 2024,
+    year: 2025,
     medium: "Óleo sobre tela",
     dimensions: "60 x 80 cm",
     image: "https://i.imgur.com/NJB98vc.jpeg",
@@ -68,7 +68,7 @@ const artworks = [
   {
     id: 7,
     title: "Regresión",
-    year: 2024,
+    year: 2025,
     medium: "Óleo sobre tela",
     dimensions: "60 x 90 cm",
     image: "https://i.imgur.com/t5rBgxM.png.jpg",
@@ -76,7 +76,7 @@ const artworks = [
   {
     id: 8,
     title: "Niveles",
-    year: 2024,
+    year: 2023,
     medium: "Óleo sobre tela",
     dimensions: "80 x 90 cm",
     image: "https://i.imgur.com/ouBbwZe.png.png",
