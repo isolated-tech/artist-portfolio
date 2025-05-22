@@ -77,7 +77,7 @@ export default function AboutPage() {
 
               <div className="bg-muted/20 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">
-                  Declaración de la Artista
+                  Declaración de el artista
                 </h3>
                 <p className="text-muted-foreground italic mb-4">
                   Mi trabajo explora la tensión entre la composición

@@ -9,6 +9,19 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
+const handleClick = async () => {
+  try {
+    const res = await fetch("/api/send-email", {
+      method: "POST",
+    });
+
+    const data = await res.json();
+    console.log(data.message); // "Email sent!"
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
+};
+
 // Sample artwork data - in a real app, this would come from a database
 const artworks = [
   {
@@ -279,9 +292,11 @@ export default function ArtworkDetailPage({
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="flex-1">
-                Solicitar información sobre esta pieza
-              </Button>
+              <Link href={"/contact"}>
+                <Button className="flex-1">
+                  Solicitar información sobre esta pieza
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -80,7 +80,7 @@ export default function ExhibitionPage() {
                 </div>
                 <p className="text-muted-foreground mb-4">
                   Únete a nosotros para la noche de inauguración con la
-                  presencia de la artista.
+                  presencia de el artista.
                 </p>
               </div>
 

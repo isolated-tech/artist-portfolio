@@ -11,6 +11,7 @@ import { Menu } from "lucide-react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { FaInstagram } from "react-icons/fa";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,7 +47,7 @@ export default function ClientLayout({
                 </Link>
 
                 {/* Desktop Navigation */}
-                <nav className="ml-auto hidden md:flex gap-6">
+                <nav className="ml-auto hidden md:flex md:items-center gap-6">
                   {navItems.map((item) => (
                     <Link
                       key={item.href}
@@ -56,6 +57,16 @@ export default function ClientLayout({
                       {item.label}
                     </Link>
                   ))}
+                  <div className="flex items-center gap-4">
+                    <a
+                      href="https://www.instagram.com/jaap_1990/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:underline"
+                    >
+                      <FaInstagram className="h-6 w-6 text-primary mt-0.5" />
+                    </a>
+                  </div>
                 </nav>
 
                 {/* Mobile Navigation */}
@@ -77,6 +88,16 @@ export default function ClientLayout({
                           {item.label}
                         </Link>
                       ))}
+                      <div className="flex items-center gap-4">
+                        <a
+                          href="https://www.instagram.com/jaap_1990/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:underline"
+                        >
+                          <FaInstagram className="h-6 w-6 text-primary mt-0.5" />
+                        </a>
+                      </div>
                     </div>
                   </SheetContent>
                 </Sheet>

@@ -1,8 +1,6 @@
 "use client";
 
-import type React from "react";
-
-import { useState } from "react";
+import React, { useState } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { FaInstagram } from "react-icons/fa";
 
@@ -10,22 +8,32 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import { sendEmail } from "@/lib/sendEmail";
 
 export default function ContactPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real application, you would handle the form submission here
-    setFormSubmitted(true);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await res.json();
+      console.log(data.message); // "Email sent!"
+      setFormSubmitted(true);
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
   };
 
   return (
@@ -57,55 +65,42 @@ export default function ContactPage() {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Nombre</Label>
-                    <Input id="name" placeholder="Nombre" required />
+                    <Input
+                      id="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Nombre"
+                      required
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
-                      type="email"
-                      placeholder="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Email"
                       required
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="subject">Asunto</Label>
-                  <Select>
-                    <SelectTrigger id="subject">
-                      <SelectValue placeholder="Selecciona un asunto" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="artwork">
-                        Consulta sobre una obra de arte
-                      </SelectItem>
-                      <SelectItem value="exhibition">
-                        Información sobre la exposición
-                      </SelectItem>
-                      <SelectItem value="commission">
-                        Solicitud de encargo
-                      </SelectItem>
-                      <SelectItem value="other">Otro</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
                   <Label htmlFor="message">Mensaje</Label>
                   <Textarea
                     id="message"
-                    placeholder="Tu mensaje"
-                    rows={6}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Mensaje"
                     required
                   />
                 </div>
 
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full" onClick={handleClick}>
                   <Send className="mr-2 h-4 w-4" />
                   Enviar mensaje
                 </Button>
@@ -146,40 +141,9 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
-
-              <div className="flex items-start gap-4">
-                <Phone className="h-6 w-6 text-primary mt-0.5" />
-                <div>
-                  <h3 className="font-medium">Teléfono</h3>
-                  <a
-                    href="tel:+5215534334589"
-                    className="text-muted-foreground hover:underline"
-                  >
-                    +52 1 55 3433 4589
-                  </a>
-                </div>
-              </div>
             </div>
 
             <Separator className="my-8" />
-
-            {/* <div>
-              <h2 className="text-2xl font-semibold mb-6">
-                Gallery Representation
-              </h2>
-
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-medium">Modern Art Gallery</h3>
-                  <p className="text-muted-foreground">123 Art Street</p>
-                  <p className="text-muted-foreground">New York, NY 10001</p>
-                  <p className="text-muted-foreground mt-2">
-                    gallery@example.com
-                  </p>
-                  <p className="text-muted-foreground">(987) 654-3210</p>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
