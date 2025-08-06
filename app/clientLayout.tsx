@@ -16,11 +16,10 @@ import { FaInstagram } from "react-icons/fa";
 const inter = Inter({ subsets: ["latin"] });
 
 const navItems = [
-  { href: "/", label: "Inicio" },
-  { href: "/gallery", label: "Galería" },
-  { href: "/exhibition", label: "Exposición" },
-  { href: "/about", label: "Sobre" },
-  { href: "/contact", label: "Contacto" },
+  { href: "/", label: "Inicio", color: "bg-[#a42b2c]" },
+  { href: "/gallery", label: "Galería", color: "bg-[#17516e]" },
+  { href: "/exhibition", label: "Exposición", color: "bg-[#cc5500]" },
+  { href: "/contact", label: "Contacto", color: "bg-[#014421]" },
 ];
 
 export default function ClientLayout({
@@ -32,6 +31,9 @@ export default function ClientLayout({
 
   return (
     <html lang="es">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/rtm8vwi.css" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -40,31 +42,34 @@ export default function ClientLayout({
           disableTransitionOnChange
         >
           <div className="flex min-h-screen flex-col">
-            <header className="border-b sticky top-0 bg-background z-40">
+            <header className="border-b border-gray-800 sticky top-0 bg-black z-40 flex-shrink-0">
               <div className="flex h-16 items-center px-4 md:px-6">
-                <Link href="/" className="font-semibold text-lg">
-                  Alfonso Alfaro
+                <Link href="/?video=true" className="flex items-center">
+                  <img 
+                    src="https://i.imgur.com/Gnb8wsE.png" 
+                    alt="JAAP Logo" 
+                    className="h-12 w-auto"
+                  />
                 </Link>
 
                 {/* Desktop Navigation */}
-                <nav className="ml-auto hidden md:flex md:items-center gap-6">
+                <nav className="ml-auto hidden md:flex md:items-center gap-4">
                   {navItems.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="text-sm font-medium hover:underline underline-offset-4"
-                    >
-                      {item.label}
-                    </Link>
+                      className={`w-8 h-8 ${item.color} hover:opacity-80 transition-opacity`}
+                      aria-label={item.label}
+                    />
                   ))}
                   <div className="flex items-center gap-4">
                     <a
                       href="https://www.instagram.com/jaap_1990/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:underline"
+                      className="text-white hover:opacity-80"
                     >
-                      <FaInstagram className="h-6 w-6 text-primary mt-0.5" />
+                      <FaInstagram className="h-6 w-6 text-white mt-0.5" />
                     </a>
                   </div>
                 </nav>
@@ -72,30 +77,29 @@ export default function ClientLayout({
                 {/* Mobile Navigation */}
                 <Sheet open={isOpen} onOpenChange={setIsOpen}>
                   <SheetTrigger asChild className="md:hidden ml-auto">
-                    <Button variant="ghost" size="icon" aria-label="Menu">
+                    <Button variant="ghost" size="icon" aria-label="Menu" className="text-white hover:text-white hover:bg-white/20">
                       <Menu className="h-5 w-5" />
                     </Button>
                   </SheetTrigger>
                   <SheetContent side="right" className="w-[240px] sm:w-[300px]">
-                    <div className="flex flex-col gap-6 mt-8">
+                    <div className="flex flex-wrap gap-4 mt-8">
                       {navItems.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
-                          className="text-lg font-medium hover:underline underline-offset-4"
+                          className={`w-12 h-12 ${item.color} hover:opacity-80 transition-opacity`}
+                          aria-label={item.label}
                           onClick={() => setIsOpen(false)}
-                        >
-                          {item.label}
-                        </Link>
+                        />
                       ))}
                       <div className="flex items-center gap-4">
                         <a
                           href="https://www.instagram.com/jaap_1990/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:underline"
+                          className="text-white hover:opacity-80"
                         >
-                          <FaInstagram className="h-6 w-6 text-primary mt-0.5" />
+                          <FaInstagram className="h-6 w-6 text-white mt-0.5" />
                         </a>
                       </div>
                     </div>
@@ -104,27 +108,6 @@ export default function ClientLayout({
               </div>
             </header>
             {children}
-            <footer className="border-t py-6 md:py-8">
-              <div className="container flex flex-col items-center justify-center gap-4 md:flex-row md:gap-8">
-                <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-                  © 2025 Alfonso Alfaro. Todos los derechos reservados.
-                </p>
-                <div className="flex gap-4">
-                  <Link
-                    href="#"
-                    className="text-sm font-medium hover:underline underline-offset-4"
-                  >
-                    Política de Privacidad
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-sm font-medium hover:underline underline-offset-4"
-                  >
-                    Términos de Servicio
-                  </Link>
-                </div>
-              </div>
-            </footer>
           </div>
         </ThemeProvider>
       </body>

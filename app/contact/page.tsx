@@ -1,14 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
-import { FaInstagram } from "react-icons/fa";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Separator } from "@/components/ui/separator";
 import { sendEmail } from "@/lib/sendEmail";
 
 export default function ContactPage() {
@@ -37,22 +34,14 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="py-12 px-4 md:px-6">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Contacto</h1>
+    <main className="bg-[#014421] h-screen flex flex-col items-center justify-center px-4 md:px-6 overflow-hidden">
+      <div className="w-full max-w-2xl text-white">
+        <h1 className="text-5xl md:text-6xl font-bold mb-8 text-center">CONTACTO</h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-2xl font-semibold mb-6">Póngase en Contacto</h2>
-            <p className="text-muted-foreground mb-8">
-              ¿Estás interesado en una obra en particular? ¿Tienes preguntas
-              sobre la próxima exposición? ¿O tal vez te interesa encargar una
-              pieza? Rellena el formulario a continuación y te responderé lo
-              antes posible.
-            </p>
+        <div>
 
             {formSubmitted ? (
-              <div className="bg-primary/10 border border-primary/20 rounded-lg p-6 text-center">
+              <div className="bg-white/10 border border-white/20 rounded-lg p-6 text-center">
                 <h3 className="text-xl font-medium mb-4">
                   Gracias por tu mensaje
                 </h3>
@@ -65,86 +54,49 @@ export default function ContactPage() {
                 </Button>
               </div>
             ) : (
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <form className="space-y-4" onSubmit={handleClick}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Nombre</Label>
+                    <Label htmlFor="name" className="text-white">Nombre</Label>
                     <Input
                       id="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Nombre"
                       required
+                      className="bg-transparent border-2 border-white text-white placeholder:text-gray-400 rounded-full"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email" className="text-white">Email</Label>
                     <Input
                       id="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Email"
                       required
+                      className="bg-transparent border-2 border-white text-white placeholder:text-gray-400 rounded-full"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Mensaje</Label>
+                  <Label htmlFor="message" className="text-white">Mensaje</Label>
                   <Textarea
                     id="message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Mensaje"
                     required
+                    className="bg-transparent border-2 border-white text-white placeholder:text-gray-400 rounded-3xl"
                   />
                 </div>
 
-                <Button type="submit" className="w-full" onClick={handleClick}>
-                  <Send className="mr-2 h-4 w-4" />
-                  Enviar mensaje
+                <Button type="submit" className="w-full bg-transparent text-white hover:text-gray-300 border-0 text-xl font-bold">
+                  ENVIAR MENSAJE
                 </Button>
               </form>
             )}
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold mb-6">
-              Información de contacto
-            </h2>
-
-            <div className="space-y-6 mb-8">
-              <div className="flex items-start gap-4">
-                <Mail className="h-6 w-6 text-primary mt-0.5" />
-                <div>
-                  <h3 className="font-medium">Email</h3>
-                  <a
-                    href="mailto:aalfaro90@gpofinalpa.com"
-                    className="text-muted-foreground no-underline hover:underline"
-                  >
-                    aalfaro90@gpofinalpa.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <FaInstagram className="h-6 w-6 text-primary mt-0.5" />
-                <div>
-                  <h3 className="font-medium">Instagram</h3>
-                  <a
-                    href="https://www.instagram.com/jaap_1990/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:underline"
-                  >
-                    @jaap_1990
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <Separator className="my-8" />
-          </div>
         </div>
       </div>
     </main>
