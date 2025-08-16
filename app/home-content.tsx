@@ -44,7 +44,14 @@ export default function HomeContent() {
   }
 
   return (
-    <main className="flex-1 bg-[#a42b2c] pt-4">
+    <main className="flex-1 bg-[#a42b2c] pt-4 relative">
+      {/* Coming Soon Overlay */}
+      <div className="fixed inset-0 z-40 bg-black/50 flex items-center justify-center">
+        <h1 className="text-white text-4xl md:text-6xl font-bold">
+          Próximamente / Coming Soon
+        </h1>
+      </div>
+      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[10px] px-4 md:px-6 lg:h-[calc(100vh-5rem)] pb-4 lg:grid-rows-1">
         <div className="w-full flex flex-col gap-[10px] lg:h-full lg:overflow-y-auto lg:pr-2 lg:hover:bg-black/5 lg:transition-all lg:duration-200 lg:rounded-sm lg:-m-2 lg:p-2">
           <img
